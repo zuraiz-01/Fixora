@@ -12,6 +12,7 @@ It delivers a premium dark UI with neon accents, rich motion, and smooth section
 - 🎨 Theme: Dark + lime accent + glassy cards + subtle grid ambience
 - 📱 Experience: Mobile-first responsiveness with desktop polish
 - 🧭 Flow: Scroll-driven landing page with strong CTA journey
+- 🌐 Live URL: https://fixorareact.netlify.app/
 
 ---
 
