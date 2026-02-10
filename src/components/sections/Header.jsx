@@ -2,7 +2,7 @@ function Header({ isMenuOpen, onToggleMenu, onNavClick }) {
   return (
     <header className="topbar reveal">
       <div className="brand">
-        <span className="brand-mark">H</span>
+        <span className="brand-mark">F</span>
         <span className="brand-name">Fixora</span>
       </div>
       <nav className={`nav-links ${isMenuOpen ? 'is-open' : ''}`}>

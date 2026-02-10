@@ -104,12 +104,31 @@ npm run preview
 
 ```text
 .
+├── netlify.toml
 ├── public/
+│   ├── _redirects
 │   ├── favicon.svg
 │   └── images/
 ├── src/
-│   ├── App.jsx
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── BackToTopButton.jsx
+│   │   │   └── CursorLayer.jsx
+│   │   └── sections/
+│   │       ├── Header.jsx
+│   │       ├── HeroSection.jsx
+│   │       ├── AboutSection.jsx
+│   │       ├── ServicesSection.jsx
+│   │       ├── TickerSection.jsx
+│   │       ├── StatsSection.jsx
+│   │       ├── ProcessSection.jsx
+│   │       ├── TestimonialsSection.jsx
+│   │       ├── FaqSection.jsx
+│   │       └── FooterSection.jsx
+│   ├── data/
+│   │   └── siteContent.js
 │   ├── App.css
+│   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
 ├── index.html
@@ -121,11 +140,43 @@ npm run preview
 
 ## 🎛️ Customization Guide
 
-- ✍️ Update text/content in `src/App.jsx`
-- 🎨 Update theme, spacing, and animation in `src/App.css`
+- ✍️ Update section text/content in `src/data/siteContent.js`
+- 🧩 Update layout blocks in `src/components/sections/*`
+- 🎨 Update theme, spacing, and animations in `src/App.css`
 - 🖼️ Replace website images in `public/images`
 - 🅵 Replace/update favicon in `public/favicon.svg`
-- 📞 Change contact/email in `src/App.jsx`
+- 📞 Change contact/email in `src/components/sections/HeroSection.jsx` and `src/components/sections/FooterSection.jsx`
+
+---
+
+## 🌍 Netlify Deployment
+
+### Option 1: Netlify UI (Recommended) 🚀
+
+1. Push this project to GitHub/GitLab/Bitbucket.
+2. In Netlify, click **Add new site** → **Import an existing project**.
+3. Build settings (already configured via `netlify.toml`):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+4. Deploy 🎉
+
+### Option 2: Manual Deploy 📦
+
+```bash
+npm run build
+```
+
+Then upload the generated `dist/` folder to Netlify.
+
+### SPA Fallback ✅
+
+`public/_redirects` is included:
+
+```text
+/* /index.html 200
+```
+
+This ensures deep links/routes work correctly on Netlify.
 
 ---
 
