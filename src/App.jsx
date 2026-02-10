@@ -197,33 +197,21 @@ function App() {
     let targetY = window.innerHeight / 2
     let ringX = targetX
     let ringY = targetY
-    let lineX = targetX
-    let lineY = targetY
     let glowX = targetX
     let glowY = targetY
     let rafId = 0
 
     const animateCursor = () => {
-      ringX += (targetX - ringX) * 0.28
-      ringY += (targetY - ringY) * 0.28
-      lineX += (targetX - lineX) * 0.38
-      lineY += (targetY - lineY) * 0.38
-      glowX += (targetX - glowX) * 0.16
-      glowY += (targetY - glowY) * 0.16
+      ringX += (targetX - ringX) * 0.34
+      ringY += (targetY - ringY) * 0.34
+      glowX += (targetX - glowX) * 0.2
+      glowY += (targetY - glowY) * 0.2
 
-      const velocityX = targetX - lineX
-      const velocityY = targetY - lineY
-      const speed = Math.min(22, Math.hypot(velocityX, velocityY))
-      const angleRad = Math.atan2(velocityY, velocityX)
-      const angle = angleRad * (180 / Math.PI)
-      const lineWidth = 18 + speed * 0.45
-      const lineOffset = 16 + lineWidth * 0.5
-      const lineCenterX = lineX + Math.cos(angleRad) * lineOffset
-      const lineCenterY = lineY + Math.sin(angleRad) * lineOffset
+      const lineCenterX = ringX - 26
+      const lineCenterY = ringY
 
       cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
-      cursorLine.style.transform = `translate3d(${lineCenterX}px, ${lineCenterY}px, 0) translate(-50%, -50%) rotate(${angle}deg)`
-      cursorLine.style.width = `${lineWidth}px`
+      cursorLine.style.transform = `translate3d(${lineCenterX}px, ${lineCenterY}px, 0) translate(-50%, -50%)`
       cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`
 
       rafId = window.requestAnimationFrame(animateCursor)
@@ -324,29 +312,50 @@ function App() {
       <section className="hero section-block reveal" id="projects">
         <aside className="hero-side-info reveal reveal-left">
           <div className="side-card">
-            <p>Large range of services provided</p>
-            <small>Covering carpentry, wiring, plumbing, and premium finish work.</small>
+            <p>End-to-end home services</p>
+            <small>Plumbing, electrical, carpentry, painting, and urgent maintenance in one place.</small>
           </div>
           <div className="side-card">
-            <p>Professional experiences</p>
-            <small>Trusted field team handling residential maintenance and upgrades.</small>
+            <p>Verified skilled team</p>
+            <small>Trained professionals delivering clean execution with safety-first standards.</small>
           </div>
         </aside>
 
         <div className="hero-main reveal">
           <p className="section-label">Working with excellent</p>
-          <h1>Increase your handyman service quality</h1>
+          <div className="hero-badges">
+            <span>24/7 Booking</span>
+            <span>Same-Day Visit</span>
+            <span>Verified Experts</span>
+          </div>
+          <h1>
+            Fixora keeps your home <span className="hero-highlight">safe, smooth, and stress-free</span>
+          </h1>
           <p>
-            We are a team of trained experts delivering fast home services with accurate work,
-            clean execution, and complete safety standards.
+            From quick repairs to full maintenance, our experts deliver reliable service with
+            transparent pricing, fast response, and clean finishing.
           </p>
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={() => scrollToSection('contact')}>
-              Start Right Now
+              Book a Service
             </button>
             <button className="btn btn-outline" onClick={() => scrollToSection('about')}>
-              About Fixora
+              Explore Fixora
             </button>
+          </div>
+          <div className="hero-metrics">
+            <p>
+              <strong>4.9/5</strong>
+              <span>Customer Rating</span>
+            </p>
+            <p>
+              <strong>10k+</strong>
+              <span>Jobs Completed</span>
+            </p>
+            <p>
+              <strong>35 min</strong>
+              <span>Avg. Response</span>
+            </p>
           </div>
         </div>
 

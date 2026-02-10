@@ -168,8 +168,25 @@
   border: 1px solid var(--line);
   border-radius: 24px;
   padding: 1.8rem;
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  background:
+    radial-gradient(circle at 50% 12%, rgba(184, 255, 60, 0.1), transparent 43%),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
   transition: transform 320ms ease, border-color 320ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -130px;
+  top: -120px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(184, 255, 60, 0.16) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
 }
 
 .hero-side-info,
@@ -180,9 +197,18 @@
   gap: 1rem;
 }
 
+.hero-contact {
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  padding-left: 0.9rem;
+}
+
 .side-card {
-  border-left: 1px solid var(--line);
+  border-left: 1px solid rgba(184, 255, 60, 0.25);
   padding-left: 0.8rem;
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 0 10px 10px 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .side-card p {
@@ -893,12 +919,18 @@
 }
 
 .cursor-glow {
-  width: 72px;
-  height: 72px;
+  width: 118px;
+  height: 118px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(184, 255, 60, 0.3) 0%, rgba(184, 255, 60, 0.12) 35%, transparent 72%);
-  filter: blur(7px);
-  transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
+  background: radial-gradient(
+    circle,
+    rgba(184, 255, 60, 0.34) 0%,
+    rgba(184, 255, 60, 0.2) 34%,
+    rgba(184, 255, 60, 0.07) 58%,
+    transparent 82%
+  );
+  filter: blur(11px);
+  transition: opacity 260ms ease, transform 260ms ease, filter 260ms ease;
 }
 
 .cursor-ring {
@@ -926,7 +958,7 @@
 }
 
 .cursor-glow.is-hover {
-  filter: blur(10px);
+  filter: blur(15px);
 }
 
 .cursor-ring.is-hover {
@@ -941,12 +973,12 @@
 .reveal {
   --delay: 0ms;
   opacity: 0;
-  transform: translate3d(0, 30px, 0) scale(0.985);
-  filter: blur(4px);
+  transform: translate3d(0, 26px, 0) scale(0.99);
+  filter: blur(2.5px);
   transition:
-    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    filter 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 860ms cubic-bezier(0.16, 0.74, 0.22, 1),
+    transform 860ms cubic-bezier(0.16, 0.74, 0.22, 1),
+    filter 860ms cubic-bezier(0.16, 0.74, 0.22, 1);
   transition-delay: var(--delay);
 }
 
