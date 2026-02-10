@@ -240,6 +240,26 @@
   padding: 2rem 1rem;
 }
 
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.hero-badges span {
+  border: 1px solid rgba(184, 255, 60, 0.3);
+  background: rgba(184, 255, 60, 0.08);
+  color: #d9ff9e;
+  border-radius: 999px;
+  padding: 0.38rem 0.7rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .section-label {
   margin: 0;
   color: var(--accent);
@@ -250,10 +270,15 @@
 }
 
 .hero-main h1 {
-  margin: 0.7rem auto 1rem;
+  margin: 1rem auto 1rem;
   font-size: clamp(2rem, 4.8vw, 4.3rem);
-  line-height: 1.04;
+  line-height: 1.06;
   max-width: 12ch;
+}
+
+.hero-highlight {
+  color: #d9ff9f;
+  text-shadow: 0 0 24px rgba(184, 255, 60, 0.35);
 }
 
 .hero-main p {
@@ -270,6 +295,33 @@
   justify-content: center;
   gap: 0.8rem;
   flex-wrap: wrap;
+}
+
+.hero-metrics {
+  margin: 1.35rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  max-width: 540px;
+}
+
+.hero-metrics p {
+  margin: 0;
+  display: grid;
+  gap: 0.18rem;
+}
+
+.hero-metrics strong {
+  color: #e7ffc2;
+  font-size: 1.02rem;
+}
+
+.hero-metrics span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
 }
 
 .btn {
@@ -1104,6 +1156,20 @@
     justify-content: flex-start;
   }
 
+  .hero-badges {
+    justify-content: flex-start;
+  }
+
+  .hero-metrics {
+    margin-inline: 0;
+    max-width: none;
+  }
+
+  .hero-contact {
+    border-left: 0;
+    padding-left: 0;
+  }
+
   .about,
   .services,
   .process,
@@ -1159,6 +1225,11 @@
 
   .hero-main h1 {
     font-size: clamp(1.8rem, 10vw, 2.8rem);
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .service-card {
