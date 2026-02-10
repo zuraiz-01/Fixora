@@ -927,12 +927,11 @@
 
 .cursor-glow.is-hover {
   filter: blur(10px);
-  transform: scale(1.15);
 }
 
 .cursor-ring.is-hover {
   border-color: #d6ff89;
-  transform: scale(1.25);
+  box-shadow: 0 0 26px rgba(184, 255, 60, 0.42);
 }
 
 .cursor-line.is-hover {
@@ -988,6 +987,15 @@
   .cursor-ring,
   .cursor-line {
     display: none;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  summary {
+    cursor: auto !important;
   }
 
   .reveal,

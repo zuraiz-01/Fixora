@@ -214,11 +214,16 @@ function App() {
       const velocityX = targetX - lineX
       const velocityY = targetY - lineY
       const speed = Math.min(22, Math.hypot(velocityX, velocityY))
-      const angle = Math.atan2(velocityY, velocityX) * (180 / Math.PI)
+      const angleRad = Math.atan2(velocityY, velocityX)
+      const angle = angleRad * (180 / Math.PI)
+      const lineWidth = 18 + speed * 0.45
+      const lineOffset = 16 + lineWidth * 0.5
+      const lineCenterX = lineX + Math.cos(angleRad) * lineOffset
+      const lineCenterY = lineY + Math.sin(angleRad) * lineOffset
 
       cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
-      cursorLine.style.transform = `translate3d(${lineX}px, ${lineY}px, 0) translate(-50%, -50%) rotate(${angle}deg)`
-      cursorLine.style.width = `${18 + speed * 0.45}px`
+      cursorLine.style.transform = `translate3d(${lineCenterX}px, ${lineCenterY}px, 0) translate(-50%, -50%) rotate(${angle}deg)`
+      cursorLine.style.width = `${lineWidth}px`
       cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`
 
       rafId = window.requestAnimationFrame(animateCursor)
@@ -241,7 +246,15 @@ function App() {
       toggleVisibility(false)
     }
 
+    const handleMouseEnter = () => {
+      toggleVisibility(true)
+    }
+
     const handleHoverState = (event) => {
+      if (!(event.target instanceof Element)) {
+        return
+      }
+
       const interactiveTarget = event.target.closest(
         'a, button, input, textarea, summary, .service-card, .process-card, .review-card'
       )
@@ -253,7 +266,7 @@ function App() {
     }
 
     document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseenter', () => toggleVisibility(true))
+    document.addEventListener('mouseenter', handleMouseEnter)
     document.addEventListener('mouseleave', handleMouseLeave)
     document.addEventListener('mouseover', handleHoverState)
 
@@ -262,6 +275,7 @@ function App() {
     return () => {
       window.cancelAnimationFrame(rafId)
       document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseenter', handleMouseEnter)
       document.removeEventListener('mouseleave', handleMouseLeave)
       document.removeEventListener('mouseover', handleHoverState)
     }
@@ -583,7 +597,7 @@ function App() {
         </div>
 
         <div className="footer-bottom reveal">
-          <p>Copyright by Zuraiz</p>
+          <p>&copy; 2026 Fixora. Designed and developed by Zuraiz. All rights reserved.</p>
           <div>
             <a href="#faq" onClick={(event) => handleNavClick(event, 'faq')}>
               Privacy Policy
